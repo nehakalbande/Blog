@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from home. models import Contact
+from . models import Contact
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -11,26 +11,26 @@ def home(request):
 
     return render(request, 'home/home.html', context)
 
-def contact(request):
-    if request.method == 'POST':
-      name = request.POST['name']
-      email = request.POST['email']
-      phone = request.POST['phone']
-      content = request.POST['content']
-      print(name, email, phone, content)
+#def contact(request):
+   # if request.method == 'POST':
+    #  name = request.POST['name']
+    #  email = request.POST['email']
+     # phone = request.POST['phone']
+     # content = request.POST['content']
+    #  print(name, email, phone, content)
 
 
-      if len(name)<2 or len(email)<3 or len(phone)<10 or len(content)<4:
-          messages.error(request, "Please fill the form correctly")
-      else:
-           contact = Contact(name=name, email=email, phone=phone, content=content)
-           contact.save()
-           messages.success(request, "Your message has been delivered")
+     # if len(name)<2 or len(email)<3 or len(phone)<10 or len(content)<4:
+      #    messages.error(request, "Please fill the form correctly")
+     # else:
+      #     contact = Contact(name=name, email=email, phone=phone, content=content)
+       #    contact.save()
+        #   messages.success(request, "Your message has been delivered")
 
-    return render(request, 'home/contact.html')
+#    return render(request, 'home/contact.html')
 
-def about(request):
-    return render(request, 'home/about.html')
+#def about(request):
+   # return render(request, 'home/about.html')
 
 def search(request):
     #allPosts = Post.objects.all()
@@ -48,6 +48,7 @@ def search(request):
     return render(request, 'home/search.html', params)
 
 #Authentication APIs
+
 def handleSignup(request):
     if request.method == 'POST':
      # Get the post parameters
@@ -59,7 +60,7 @@ def handleSignup(request):
        pass2 = request.POST['pass2']
 
        # Check for errorneous inputs
-       #userna,e should be under 10 characters
+       #username should be under 10 characters
        if len(username) > 10:
          messages.error(request, "Username must be under 10 chracters")
          return redirect('home')
