@@ -9,7 +9,7 @@ from blog.models import Post
 def home(request):
     context = {}
 
-    return render(request, 'home/home.html', context)
+    return render(request, 'home/index.html', context)
 
 #def contact(request):
    # if request.method == 'POST':
